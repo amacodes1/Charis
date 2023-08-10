@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+SA+Beginner:wght@400;500&family=Kanit:wght@300&family=Oswald&family=REM:wght@800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.catLink {
+  @apply justify-self-center ms-14 lg:ms-16
+}
+
+nav .inputBox::placeholder {
+  @apply text-stone-50
+}
