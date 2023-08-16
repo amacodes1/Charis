@@ -1,10 +1,13 @@
 'use client'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link";
+import { ShoppingCart, User} from "phosphor-react"
 
 export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+    const [windowWidth, setWindowWidth] = useState(1000)
+    
+    
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!mobileMenuOpen)
     };
@@ -12,6 +15,12 @@ export default function Navbar() {
     const closeMobileMenu = () => {
         setMobileMenuOpen(false);
     };
+
+    useEffect(()=> {
+   window.addEventListener('resize', ()=> {
+       setWindowWidth(window.innerWidth)
+   })
+}, [])
 
   return (
     <nav className="bg-teal-200 w-full h-24 p-4 sticky">
@@ -44,8 +53,8 @@ export default function Navbar() {
         </div>
         <div className="flex md:flex-row mx-auto md:mt-3">
 
-            <h1 className={`text-2xl md:text-4xl font-bold pl-24 md:pl-10 mb-0 md:mb-0 z-20 ${mobileMenuOpen ? 'hidden' : 'block'}`}>
-            <Link href="/" className="text-black no-underline font-rem">Charis.</Link>
+            <h1 className={`text-4xl md:text-5xl font-bold pl-24 md:pl-10 mb-2 md:mb-0 z-20 ${mobileMenuOpen ? 'hidden' : 'block'}`}>
+            <Link href="/" className="text-black no-underline pb-3 font-rem">Charis.</Link>
             </h1>
 
             <div className={`flex-1 md:space-x-2 pb-3 md:block md:pb-0 ${mobileMenuOpen ? 'p-4 md:p-0 block' : 'hidden'}`}>
@@ -74,12 +83,24 @@ export default function Navbar() {
                 </div>
             </div>
 
-            <div className={`inline-block relative ltr ml-8 md:ml-8 lg:ml-8 flex        items-center flex-row max-w-xs w-fit h-fit bg-black rounded-full cursor-pointer overflow-hidden ${mobileMenuOpen ? 'hidden' : 'block'}`}>
-                <svg className="search_icon h-6 py-1 px-2 fill-stone-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48  48">
+            <div className={`flex flex-row relative ltr ml-8 md:ml-8 lg:ml-2 items-center       max-w-xs w-fit h-fit bg-black rounded-full cursor-pointer overflow-hidden ${mobileMenuOpen ? 'hidden' : 'block'}`}>
+                <svg className="search_icon h-6 py-1 px-1 pl-2 fill-stone-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48  48">
                     <path d="M46.599 46.599a4.498 4.498 0 0 1-6.363 0l-7.941-7.941C29.028 40.749 25.167 42 21 42 9.402 42 0 32.598 0 21S9.402 0 21 0s21 9.402 21 21c0 4.167-1.251 8.028-3.342 11.295l7.941 7.941a4.498 4.498 0 0 1 0 6.363zM21 6C12.717 6 6 12.714 6 21s6.717 15 15 15c8.286 0 15-6.714 15-15S29.286 6 21 6z">
                     </path>
                 </svg>
-                <input className={`inputBox bg-transparent outline-inherit border-0 w-full py-2 pr-1 text-sm ${!mobileMenuOpen ? 'xs:hidden' : 'block'}`} placeholder="Search Products" id="inputBox" type="text" />
+                <input className={`inputBox bg-transparent outline-inherit border-0 w-40 py-2 pr-2 text-sm ${windowWidth > 640 ? 'block' : 'hidden'}`} placeholder="search products" id="inputBox" type="text" />
+            </div>
+
+            <div className="account ml-4">
+                <Link href="/">
+                    <User size={32} />
+                </Link>
+            </div>
+            
+            <div className="cart ml-4">
+                <Link href="/">
+                    <ShoppingCart size={32} />
+                </Link>
             </div>
         </div>   
     </nav>

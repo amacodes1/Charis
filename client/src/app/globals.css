@@ -11,3 +11,15 @@
 nav .inputBox::placeholder {
   @apply text-stone-50
 }
+
+.timerSegment {
+  @apply flex flex-col m-3 md:mx-6 uppercase
+}
+
+.timerSegment .label {
+  @apply mb-3
+}
+
+.time {
+  @apply font-bold text-4xl
+}

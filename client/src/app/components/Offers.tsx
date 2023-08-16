@@ -1,7 +1,9 @@
-export default function Newsletter() {
+
+
+export default function Offers() {
   return (
     <section className=" mb-10">
-        <div className="max-[768px]:px-[2rem] bg-teal-100 mx-auto md:px-8 py-28 text-center ">
+        <div className="max-[768px]:px-[2rem] bg-slate-900 mx-auto md:px-8 py-28 text-center ">
             <h1 className="uppercase text-xl text-red-600 font-kanit">Join Our Newsletter</h1>
             <p className="text-4xl font-bold font-kanit text-black">Subscribe to get updated with new offers</p>
             <div className="py-4">

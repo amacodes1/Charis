@@ -1,10 +1,10 @@
 import Link from "next/link"
 import Image from "next/image"
 
-export default function Products() {
+export default function Products2() {
   return (
     <section className="container mx-auto my-8 md:px-5 py-10">
-        <h1 className="font-bold font-kanit text-4xl py-12 text-center">Popular Products</h1>
+        <h1 className="font-bold font-kanit text-4xl py-12 text-center">Best Sellers</h1>
         <div className="grid md:grid-cols-3 gap-y-6 md:gap-14">
             {ReturnProducts()}
             {ReturnProducts()}
@@ -21,7 +21,7 @@ export function ReturnProducts() {
     return(
         <div className="flex flex-col bg-teal-50 p-2 text-l">
             <div className="images py-2 md:py-1">
-                <Link href={"/"}><Image src={"/images/charis-img-4.webp"} width={650} height={250} className="rounded" alt="" /></Link>
+                <Link href={"/"}><Image src={"/images/charis-img-5.webp"} width={650} height={250} className="rounded" alt="" /></Link>
             </div>
             <div className="info justify-center py-4 ml-24">
                 <div className="title">
