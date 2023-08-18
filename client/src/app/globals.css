@@ -23,3 +23,15 @@ nav .inputBox::placeholder {
 .time {
   @apply font-bold text-4xl
 }
+
+.offer h2 {
+  @apply mr-3 font-bold font-kanit text-2xl
+}
+
+.offer h4 {
+  @apply font-beginner text-2xl
+}
+
+.offer .image {
+  @apply md:mb-5
+}
