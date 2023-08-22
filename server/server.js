@@ -3,6 +3,15 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config()
+const authRoute = require("./routes/authRoute");
+const cors = require("cors");
+
+app.use(express.json())
+app.use(cors());
+
+
+// Middleware connection
+app.use("/api/auth", authRoute);
 
 
 // connect to mongodb compass
