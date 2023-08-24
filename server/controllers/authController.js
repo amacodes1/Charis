@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 
 // REGISTER
 const registerControl = async (req, res) => {
-    const {username, firstName, lastName, email, password} = req.body;
+    const {firstName, lastName, email, password} = req.body;
 
     try {
         // Check password length
@@ -31,7 +31,7 @@ const registerControl = async (req, res) => {
         }
 
         // Create new User
-        const newUser = await User.create({ username, firstName, lastName, email, password: hashPassword });
+        const newUser = await User.create({ firstName, lastName, email, password: hashPassword });
         if (newUser) {
             return res.status(200).json({
                 success: true,
@@ -69,13 +69,20 @@ const loginControl = async (req, res) => {
         if (findUser && validPassword) {
             res.json({
                 email: User?.email,
-                username: User?.username,
+                firstName: User?.firstName,
+                lastName: User?.lastName,
+                token: generateToken(User?._id)
             });
         }
+
+        res.status(200).json({
+            success: true,
+            msg: "Login successful"
+        })
 
     } catch (err) {
         res.status(500).json(err);
     }
 };
 
-module.exports = { registerControl, loginControl}
+module.exports = { registerControl, loginControl };
