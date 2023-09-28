@@ -1,37 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Edu+SA+Beginner:wght@400;500&family=Kanit:wght@300&family=Oswald&family=REM:wght@800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Edu+SA+Beginner:wght@400;500&family=Kanit:wght@300&family=Oswald&family=REM:wght@800&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .catLink {
-  @apply justify-self-center ms-14 lg:ms-16
+  @apply justify-self-center ms-14 lg:ms-16;
 }
 
 nav .inputBox::placeholder {
-  @apply text-stone-50
+  @apply text-stone-50;
 }
 
 .timerSegment {
-  @apply flex flex-col m-3 md:mx-6 uppercase
+  @apply flex flex-col m-3 md:mx-6 uppercase;
 }
 
 .timerSegment .label {
-  @apply mb-3
+  @apply mb-3;
 }
 
 .time {
-  @apply font-bold text-4xl
+  @apply font-bold text-4xl;
 }
 
 .offer h2 {
-  @apply mr-3 font-bold font-kanit text-2xl
+  @apply mr-3 font-bold font-kanit text-2xl;
 }
 
 .offer h4 {
-  @apply font-beginner text-2xl
+  @apply font-beginner text-2xl;
 }
 
 .offer .image {
-  @apply md:mb-5
+  @apply md:mb-5;
+}
+
+.registerForm label {
+  @apply my-2;
+}
+
+.productDetails .qtyBtn {
+  @apply border-[1.2px] border-slate-300 px-2 rounded;
 }
