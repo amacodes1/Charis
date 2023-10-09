@@ -10,21 +10,27 @@ export const cartSlice = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
-      // state.cartItems.push(action.payload);
-      const check = state.productList.find((x) => x.id === action.payload.id);
-      if (!check) {
-        state.productList = [...state.productList, action.payload];
+      const itemInCart = state.productList.find(
+        (item) => item.id === action.payload.id
+      );
+      if (itemInCart) {
+        itemInCart.quantity++;
+      } else {
+        state.productList.push({ ...action.payload, quantity: 1 });
       }
     },
 
     removeItem: (state, action) => {
-      return state.filter((x) => x.id !== action.payload);
+      const removeItem = state.productList.filter(
+        (item) => item.id !== action.payload
+      );
+      state.productList = removeItem;
     },
 
     Quantity: (state, action) => {
       const { id, operation } = action.payload;
       const existingProduct = state.productList.find(
-        (x) => x.id === action.payload.id
+        (item) => item.id === action.payload.id
       );
 
       if (!existingProduct) {
@@ -38,7 +44,7 @@ export const cartSlice = createSlice({
           existingProduct.Quantity -= 1;
         } else if (operation === "remove" && existingProduct.Quantity === 1) {
           state.productList = state.productList.filter(
-            (x) => x.id === action.payload.id
+            (item) => item.id === action.payload.id
           );
         }
       }

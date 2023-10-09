@@ -14,9 +14,6 @@ import UserSlice from "./userSlice";
 import cartSlice from "./cartSlice";
 import productSlice from "./productSlice";
 
-//   import UserDataSlice from './userDataSlice'
-// import leagueSlice from "./leagueSlice";
-
 const persistConfig = {
   key: "root",
   version: 1,

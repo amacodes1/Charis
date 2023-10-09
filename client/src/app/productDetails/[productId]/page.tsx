@@ -1,14 +1,17 @@
 "use client";
 
-// import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "@/app/loading";
 import { addToCart } from "@/redux/cartSlice";
-import Link from "next/link";
 import Image from "next/image";
 import { Rating } from "@mui/material";
-// import SetColor from "@/components/SetColor";
+import Button from "@/components/Button";
+import { MdCheckCircle } from "react-icons/md";
+import { useRouter } from "next/navigation";
+// import { ListRating } from "@/components/products/ListRating";
+// import ProductImages from "@/components/products/ProductImages";
+// import SetColor from "@/components/products/SetColor";
 
 interface IParams {
   productId?: string;
@@ -37,6 +40,9 @@ const HorizontalLine = () => {
 export default function ProductDetails({ params }: { params: IParams }) {
   const product = useSelector((state: any) => state.comb.prod.allProduct);
   const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(1);
+  const [isProductInCart, setIsProductInCart] = useState(false);
+  const router = useRouter();
 
   // console.log("params", typeof params.productId);
 
@@ -56,7 +62,19 @@ export default function ProductDetails({ params }: { params: IParams }) {
     price: selectedProduct?.price,
   });
 
-  const [quantity, setQuantity] = useState(1);
+  useEffect(() => {
+    setIsProductInCart(false);
+
+    if (product) {
+      const existingIndex = product.findIndex(
+        (item: any) => item.id === product.id
+      );
+
+      if (existingIndex > -1) {
+        setIsProductInCart(true);
+      }
+    }
+  }, [product]);
 
   if (!product) {
     return (
@@ -68,7 +86,7 @@ export default function ProductDetails({ params }: { params: IParams }) {
   }
 
   const handleAddToCart = () => {
-    dispatch(addToCart({ ...product, quantity }));
+    dispatch(addToCart({ ...cartProduct, quantity }));
   };
 
   const handleIncrement = () => {
@@ -89,85 +107,113 @@ export default function ProductDetails({ params }: { params: IParams }) {
   //   ],
   //   [cartProduct.selectedImg]
   // );
-  // console.log(cartProduct);
 
   return (
-    <div className="productDetails grid grid-cols-1 md:grid-cols-2 gap-12">
+    <div className="productDetails grid grid-cols-1 ">
       {selectedProduct && (
-        <>
-          <Link href="/">Back To Products</Link>
-
-          <div className="flex">
-            <div className="w-1/2">
-              {" "}
-              Images
-              <Image
-                src={selectedProduct.image}
-                width={250}
-                height={150}
-                alt={product.title}
-                className="items-center"
-              ></Image>
-              {/* {product.additionalImages.map((image: any, index: number) => (
-            <img key={index} src={image} alt={`${product?.title} - ${index}`} />
-          ))} */}
-            </div>
-            <div className="flex flex-col gap-1 text-slate-600 text-sm">
-              {" "}
-              Details
-              <p className="text-3xl font-medium text-slate-700">
-                {selectedProduct.title}
-              </p>
-              <p>Price: ${selectedProduct.price}</p>
-              <div className="flex items-center gap-2">
-                <Rating value={selectedProduct.rating.rate} readOnly />
-                <p>{selectedProduct.rating.count} reviews</p>
-              </div>
-              <HorizontalLine />
-              <p className="text-justify">
-                Description: {selectedProduct.description}
-              </p>
-              <HorizontalLine />
-              <div>
-                <span className="font-semibold">
-                  CATEGORY: {selectedProduct.category}
-                </span>
-              </div>
-              <div
-                className={
-                  selectedProduct.inStock ? "text-teal-400" : "text-rose-600"
-                }
-              >
-                {selectedProduct.inStock ? "In Stock" : "Out of Stock"}
-              </div>
-              <HorizontalLine />
-              {/* <SetColor
-                cartProduct={cartProduct}
-                product={selectedProduct.image}
-                handleColorSelect={handleColorSelect}
-              />
-              <HorizontalLine /> */}
-              <div className="flex items-center gap-8">
-                <div className="font-semibold">QUANTITY:</div>
-                <div className="flex items-center gap-4 text-base">
-                  <button className="qtyBtn" onClick={handleDecrement}>
-                    -
-                  </button>
-                  <span>{quantity}</span>
-                  <button className="qtyBtn" onClick={handleIncrement}>
-                    +
-                  </button>
-                </div>
-              </div>
-              <HorizontalLine />
-              <div className="flex items-center gap-8">
-                <button onClick={handleAddToCart}>Add To Cart</button>
-                <button>Buy Now</button>
-              </div>
-            </div>
+        <div className="flex">
+          {/* <ProductImages
+            cartProduct={cartProduct}
+            product={product.image}
+            handleColorSelect={handleColorSelect}
+          /> */}
+          <div className="images p-16 text-sm text-slate-600">
+            <Image
+              src={selectedProduct.image}
+              width={1000}
+              height={250}
+              alt="product title"
+              className="items-center pt-8"
+            ></Image>
           </div>
-        </>
+          <div className="details flex flex-col gap-1 text-slate-600 text-sm ml-20 p-28">
+            Details
+            <p className="text-3xl font-medium text-slate-700">
+              {selectedProduct.title}
+            </p>
+            <p>Price: ${selectedProduct.price}</p>
+            <div className="flex items-center gap-2">
+              <Rating value={selectedProduct.rating.rate} readOnly />
+              <p>{selectedProduct.rating.count} reviews</p>
+            </div>
+            <HorizontalLine />
+            <p className="text-justify">
+              Description: {selectedProduct.description}
+            </p>
+            <HorizontalLine />
+            <div>
+              <span className="font-semibold">
+                CATEGORY: {selectedProduct.category}
+              </span>
+            </div>
+            <div
+              className={
+                selectedProduct.inStock ? "text-teal-400" : "text-rose-600"
+              }
+            >
+              {selectedProduct.inStock ? "In Stock" : "Out of Stock"}
+            </div>
+            <HorizontalLine />
+            {isProductInCart ? (
+              <>
+                <p className="mb-2 text-slate-500 flex items-center gap-1">
+                  <MdCheckCircle className="text-teal-400" size={20} />
+                  <span>Product Added to Cart</span>
+                </p>
+                <div className="max-w-[300px]">
+                  <Button
+                    label="View Cart"
+                    outline
+                    onClick={() => {
+                      router.push("/cart");
+                    }}
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                {/* <SetColor
+              cartProduct={cartProduct}
+              product={selectedProduct.colorCode}
+              handleColorSelect={handleColorSelect}
+            /> */}
+                <HorizontalLine />
+                <div className="flex items-center gap-8">
+                  <div className="font-semibold">QUANTITY:</div>
+                  <div className="flex items-center gap-4 text-base">
+                    <button className="qtyBtn" onClick={handleDecrement}>
+                      -
+                    </button>
+                    <span>{quantity}</span>
+                    <button className="qtyBtn" onClick={handleIncrement}>
+                      +
+                    </button>
+                  </div>
+                </div>
+                <HorizontalLine />
+                <div className="flex items-center gap-8 max-w-[300px]">
+                  <Button
+                    label="Add To Cart"
+                    onClick={() => {
+                      handleAddToCart();
+                    }}
+                  />
+                  <Button
+                    label="Buy Now"
+                    onClick={() => {
+                      handleAddToCart();
+                    }}
+                  />
+                </div>
+              </>
+            )}
+          </div>
+        </div>
       )}
+      <div className="flex flex-col mt-20 gap-4">
+        <div>Add Rating</div>
+        {/* <ListRating product={selectedProduct} /> */}
+      </div>
     </div>
   );
 }

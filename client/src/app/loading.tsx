@@ -5,10 +5,10 @@ import { TailSpin } from "react-loader-spinner";
 
 export default function Loading() {
   return (
-    <div className="justify-center items-center">
+    <div className="flex justify-center items-center">
       <TailSpin
-        height="500"
-        width="300"
+        height="200"
+        width="200"
         color="gray"
         ariaLabel="tail-spin-loading"
         radius="1"

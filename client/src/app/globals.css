@@ -43,3 +43,15 @@ nav .inputBox::placeholder {
 .productDetails .qtyBtn {
   @apply border-[1.2px] border-slate-300 px-2 rounded;
 }
+
+.cartHeader div {
+  @apply flex-1 text-center text-base font-bold pb-2 uppercase mb-8 border-y-2 border-solid border-black;
+}
+
+.body > * {
+  @apply flex-1;
+}
+
+.cart .buttons > * {
+  @apply w-6 h-8 bg-black text-white border-none m-2 text-base;
+}

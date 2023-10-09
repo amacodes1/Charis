@@ -3,14 +3,14 @@
 import Image from "next/image";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../redux/cartSlice";
+import { addToCart } from "../../redux/cartSlice";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { setProducts } from "@/redux/productSlice";
 import { truncateText } from "@/utils/truncateText";
 import { Rating } from "@mui/material";
 
-export default function Products() {
+export default function ProductCard() {
   const dispatch = useDispatch();
   const router = useRouter();
   const products = useSelector((state: any) => state.comb.prod.allProduct);
@@ -37,14 +37,14 @@ export default function Products() {
     );
   };
 
-  const getProducts = async () => {
+  const getProductCard = async () => {
     const res = await fetch("https://fakestoreapi.com/products");
     const data = await res.json();
     dispatch(setProducts(data));
   };
 
   useEffect(() => {
-    getProducts();
+    getProductCard();
   }, []);
 
   return (
@@ -66,7 +66,7 @@ export default function Products() {
                   width={150}
                   height={50}
                   className=" object-contain cursor-pointer"
-                  alt={product?.title}
+                  alt="product title"
                 ></Image>
               </div>
               <div className="mt-4">
