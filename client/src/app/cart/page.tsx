@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Quantity, removeItem } from "../../redux/cartSlice";
 import Image from "next/image";
@@ -43,20 +43,22 @@ export default function Cart() {
   };
   // console.log(getTotalPrice);
 
-  // const getTotalPrice = () => {
-  //   let totalQuantity = 0;
-  //   let totalPrice = 0;
-  //   if (Array.isArray(cart)) {
-  //     cart.forEach((item: any) => {
-  //       totalQuantity += item.quantity;
-  //       totalPrice += item.price * item.quantity;
-  //     });
-  //   } else {
-  //     console.error("cart is not an array");
-  //   }
+  // useEffect(() => {
+  //   const getTotalPrice = () => {
+  //     let totalQuantity = 0;
+  //     let totalPrice = 0;
+  //     if (Array.isArray(cart)) {
+  //       cart.forEach((item: any) => {
+  //         totalQuantity += item.quantity;
+  //         totalPrice += item.price * item.quantity;
+  //       });
+  //     } else {
+  //       console.error("cart is not an array");
+  //     }
 
-  //   return { totalPrice, totalQuantity };
-  // };
+  //     return { totalPrice, totalQuantity };
+  //   };
+  // });
 
   return (
     <div className="cart container p-8 text-center">
