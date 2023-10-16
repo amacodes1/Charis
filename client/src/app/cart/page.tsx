@@ -9,10 +9,10 @@ import Link from "next/link";
 import { MdArrowBack } from "react-icons/md";
 
 export default function Cart() {
-  const cart = useSelector((state: any) => state.comb.cart);
+  const cart = useSelector((state: any) => state.comb.cart.productList);
   const dispatch = useDispatch();
 
-  // console.log(cart);
+  console.log(cart);
 
   const handleUpdateQuantity = (id: string, quantity: number) => {
     dispatch(Quantity({ id, quantity }));
@@ -41,7 +41,7 @@ export default function Cart() {
       0
     );
   };
-  // console.log(getTotalPrice);
+  console.log(getTotalPrice());
 
   // useEffect(() => {
   //   const getTotalPrice = () => {
@@ -61,7 +61,7 @@ export default function Cart() {
   // });
 
   return (
-    <div className="cart container p-8 text-center">
+    <div className="cart container p-8 text-center justify-center">
       <Heading title="Shopping Cart" center />
       {cart?.length === 0 ? (
         <h1>Your Cart is Empty!</h1>
@@ -74,7 +74,7 @@ export default function Cart() {
             <div>Actions</div>
             <div>Total Price</div>
           </div>
-          {cart?.productList?.map((item: any, index: any) => (
+          {cart?.map((item: any, index: any) => (
             <li key={index}>
               <div className="body flex justify-between items-center text-center mb-4">
                 <div className="image w-28">

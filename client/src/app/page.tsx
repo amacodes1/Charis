@@ -1,3 +1,4 @@
+import NavigationButton from "@/components/NavigationButton";
 import Newsletter from "@/components/Newsletter";
 import ProductCard from "@/components/products/ProductCard";
 import Products2 from "@/components/products/Products2";
@@ -8,6 +9,7 @@ export default function Home() {
   return (
     <main className="">
       <Slider />
+      <NavigationButton />
       <ProductCard />
       <Timer />
       <Products2 />
