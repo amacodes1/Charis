@@ -18,6 +18,9 @@ export const cartSlice = createSlice({
       } else {
         state.productList.push({ ...action.payload, quantity: 1 });
       }
+
+      state.cartTotalQuantity += 1;
+      state.cartTotalAmount += action.payload.price;
     },
 
     removeItem: (state, action) => {
@@ -35,22 +38,32 @@ export const cartSlice = createSlice({
 
       if (!existingProduct) {
         if (operation === "add") {
-          state.productList.push({ id, Quantity: 1 });
+          state.productList.push({ id, quantity: 1 });
+          state.cartTotalQuantity += 1;
         }
       } else {
         if (operation === "add") {
-          existingProduct.Quantity += 1;
-        } else if (operation === "remove" && existingProduct.Quantity > 1) {
-          existingProduct.Quantity -= 1;
+          existingProduct.quantity += 1;
+          state.cartTotalQuantity += 1;
+        } else if (operation === "remove" && existingProduct.quantity > 1) {
+          existingProduct.quantity -= 1;
+          state.cartTotalQuantity -= 1;
         } else if (operation === "remove" && existingProduct.Quantity === 1) {
           state.productList = state.productList.filter(
-            (item) => item.id === action.payload.id
+            (item) => item.id !== action.payload.id
           );
+          state.cartTotalQuantity -= 1;
         }
       }
+    },
+
+    clearCart: (state) => {
+      state.productList = [];
+      state.cartTotalQuantity = 0;
+      state.cartTotalAmount = 0;
     },
   },
 });
 
-export const { addToCart, removeItem, Quantity } = cartSlice.actions;
+export const { addToCart, removeItem, Quantity, clearCart } = cartSlice.actions;
 export default cartSlice.reducer;

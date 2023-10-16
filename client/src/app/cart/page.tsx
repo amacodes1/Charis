@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Quantity, removeItem } from "../../redux/cartSlice";
+import { Quantity, clearCart, removeItem } from "../../redux/cartSlice";
 import Image from "next/image";
 import { Heading } from "@/components/Heading";
 import Button from "@/components/Button";
@@ -32,6 +32,10 @@ export default function Cart() {
     dispatch(removeItem(id));
   };
 
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
+
   const getTotalPrice = () => {
     if (!Array.isArray(cart)) {
       return 0;
@@ -42,23 +46,6 @@ export default function Cart() {
     );
   };
   console.log(getTotalPrice());
-
-  // useEffect(() => {
-  //   const getTotalPrice = () => {
-  //     let totalQuantity = 0;
-  //     let totalPrice = 0;
-  //     if (Array.isArray(cart)) {
-  //       cart.forEach((item: any) => {
-  //         totalQuantity += item.quantity;
-  //         totalPrice += item.price * item.quantity;
-  //       });
-  //     } else {
-  //       console.error("cart is not an array");
-  //     }
-
-  //     return { totalPrice, totalQuantity };
-  //   };
-  // });
 
   return (
     <div className="cart container p-8 text-center justify-center">
@@ -123,7 +110,12 @@ export default function Cart() {
           ))}
           <div className="border-t-[1.5px] border-black py-4 flex justify-between gap-4 my-12">
             <div className="w-[90px] mt-12">
-              <Button label="Clear Cart" onClick={() => {}} small outline />
+              <Button
+                label="Clear Cart"
+                onClick={handleClearCart}
+                small
+                outline
+              />
             </div>
             <div className="flex flex-col gap-1 items-start">
               <div className="flex justify-between w-full text-base">
