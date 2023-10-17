@@ -2,10 +2,12 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ShoppingCart, User } from "phosphor-react";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(1000);
+  const cart = useSelector((state: any) => state.comb.cart.productList);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -20,6 +22,15 @@ export default function Navbar() {
       setWindowWidth(window.innerWidth);
     });
   }, []);
+
+  // Getting the count of items on the cart icon
+  const getItemsCount = () => {
+    return cart.reduce(
+      (accumulator: any, item: any) => accumulator + item.quantity,
+      0
+    );
+  };
+  // console.log(getItemsCount());
 
   return (
     <nav className="bg-teal-200 w-full h-24 p-4 sticky">
@@ -164,9 +175,10 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <div className="cart ml-4">
+        <div className="cart ml-4 relative">
           <Link href="/cart">
-            <ShoppingCart size={32} />
+            <ShoppingCart size={32} className="" />
+            <p className="absolute top-0 right-0">({getItemsCount()})</p>
           </Link>
         </div>
       </div>

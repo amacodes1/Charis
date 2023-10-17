@@ -1,7 +1,11 @@
 "use client";
-import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Quantity, clearCart, removeItem } from "../../redux/cartSlice";
+import {
+  incrementQuantity,
+  decrementQuantity,
+  clearCart,
+  removeItem,
+} from "../../redux/cartSlice";
 import Image from "next/image";
 import { Heading } from "@/components/Heading";
 import Button from "@/components/Button";
@@ -14,18 +18,11 @@ export default function Cart() {
 
   console.log(cart);
 
-  const handleUpdateQuantity = (id: string, quantity: number) => {
-    dispatch(Quantity({ id, quantity }));
-  };
+  // const handleUpdateQuantity = (id: string, quantity: number) => {
+  //   console.log(id, quantity);
 
-  // const handleIncrement = () => {
-  //   setQuantity(quantity + 1);
-  // };
-
-  // const handleDecrement = () => {
-  //   if (quantity > 1) {
-  //     setQuantity(quantity - 1);
-  //   }
+  //   const operation = quantity >= 0 ? "add" : "remove";
+  //   dispatch(Quantity({ id, operation }));
   // };
 
   const handleRemove = (id: string) => {
@@ -51,7 +48,16 @@ export default function Cart() {
     <div className="cart container p-8 text-center justify-center">
       <Heading title="Shopping Cart" center />
       {cart?.length === 0 ? (
-        <h1>Your Cart is Empty!</h1>
+        <div>
+          <h1>Your Cart is Empty!</h1>
+          <Link
+            href={"/"}
+            className="text-slate-500 flex items-center gap-1 mt-2"
+          >
+            <MdArrowBack />
+            <span>Start Shopping</span>
+          </Link>
+        </div>
       ) : (
         <ul>
           <div className="cartHeader mt-8 flex justify-between">
@@ -80,19 +86,11 @@ export default function Cart() {
                 <p>${item.price}</p>
 
                 <div className="buttons">
-                  <button
-                    onClick={() =>
-                      handleUpdateQuantity(item.id, item.quantity - 1)
-                    }
-                  >
+                  <button onClick={() => dispatch(decrementQuantity(item.id))}>
                     -
                   </button>
                   <span>{item.quantity}</span>
-                  <button
-                    onClick={() =>
-                      handleUpdateQuantity(item.id, item.quantity + 1)
-                    }
-                  >
+                  <button onClick={() => dispatch(incrementQuantity(item.id))}>
                     +
                   </button>
                 </div>

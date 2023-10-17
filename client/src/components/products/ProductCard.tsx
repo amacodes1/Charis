@@ -35,7 +35,6 @@ export default function ProductCard() {
     dispatch(
       addToCart({ id, title, description, image, price, rating, category })
     );
-    console.log(addToCart);
   };
 
   const getProductCard = async () => {

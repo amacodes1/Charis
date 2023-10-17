@@ -36,7 +36,7 @@ export const Slider = () => {
               <div>
                 {parseInt(item.id) === currentIndex && (
                   <img
-                    className="h-[850px] w-full"
+                    className="h-[500px] w-full"
                     src={item.image}
                     alt="header"
                   />
