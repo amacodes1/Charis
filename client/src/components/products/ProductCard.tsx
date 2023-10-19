@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { setProducts } from "@/redux/productSlice";
 import { truncateText } from "@/utils/truncateText";
 import { Rating } from "@mui/material";
+import { toast } from "react-toastify";
 
 export default function ProductCard() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ export default function ProductCard() {
     dispatch(
       addToCart({ id, title, description, image, price, rating, category })
     );
+    toast.success("Product added to cart");
   };
 
   const getProductCard = async () => {

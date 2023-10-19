@@ -177,8 +177,12 @@ export default function Navbar() {
 
         <div className="cart ml-4 relative">
           <Link href="/cart">
-            <ShoppingCart size={32} className="" />
-            <p className="absolute top-0 right-0">({getItemsCount()})</p>
+            <div className="border border-black rounded-lg shadow-lg border-spacing-4">
+              <ShoppingCart size={32} className="" />
+            </div>
+            <span className="text-xs align-top bg-red-500 text-white rounded-full p-1 absolute -top-3 -right-3">
+              ({getItemsCount()})
+            </span>
           </Link>
         </div>
       </div>

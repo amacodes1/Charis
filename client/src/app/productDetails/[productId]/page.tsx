@@ -9,6 +9,7 @@ import { Rating } from "@mui/material";
 import Button from "@/components/Button";
 import { MdCheckCircle } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 // import { ListRating } from "@/components/products/ListRating";
 // import ProductImages from "@/components/products/ProductImages";
 // import SetColor from "@/components/products/SetColor";
@@ -87,6 +88,9 @@ export default function ProductDetails({ params }: { params: IParams }) {
 
   const handleAddToCart = () => {
     dispatch(addToCart({ ...cartProduct, quantity }));
+    console.log("product added to cart");
+
+    toast.success("Product added to cart");
   };
 
   const handleIncrement = () => {

@@ -16,14 +16,7 @@ export default function Cart() {
   const cart = useSelector((state: any) => state.comb.cart.productList);
   const dispatch = useDispatch();
 
-  console.log(cart);
-
-  // const handleUpdateQuantity = (id: string, quantity: number) => {
-  //   console.log(id, quantity);
-
-  //   const operation = quantity >= 0 ? "add" : "remove";
-  //   dispatch(Quantity({ id, operation }));
-  // };
+  // console.log(cart);
 
   const handleRemove = (id: string) => {
     dispatch(removeItem(id));
@@ -42,7 +35,7 @@ export default function Cart() {
       0
     );
   };
-  console.log(getTotalPrice());
+  // console.log(getTotalPrice());
 
   return (
     <div className="cart container p-8 text-center justify-center">
