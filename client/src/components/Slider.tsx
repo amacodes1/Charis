@@ -7,8 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 export const Slider = () => {
   const dispatch = useDispatch();
   const { data, currentIndex } = useSelector((state: any) => state.comb.slider);
-  console.log(data);
-  console.log(currentIndex);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -108,72 +106,3 @@ export const Slider = () => {
     </div>
   );
 };
-
-// export default function Slider() {
-//   const slideIndex = useSelector((state: any) => state.comb.slider);
-//   console.log("slideIndex:", slideIndex);
-//   const dispatch = useDispatch();
-
-//   const getProductData = async () => {
-//     const res = await fetch("https://fakestoreapi.com/products");
-//     const data = await res.json();
-//     dispatch(getData(data));
-//   };
-
-//   useEffect(() => {
-//     getProductData();
-//   }, []);
-
-//   return (
-//     <div className="relative pb-4">
-//       <div>
-//         {slideIndex.getData.map((item: any) => {
-//           return (
-//             <div
-//               key={item.id}
-//               className={
-//                 parseInt(item.id) === slideIndex
-//                   ? "opacity-100 duration-700 ease-in-out scale-100"
-//                   : "opacity-0 duration-700 ease-in-out scale-95"
-//               }
-//             >
-//               <div>
-//                 {parseInt(item.id) === slideIndex && (
-//                   <img
-//                     className="h-[850px] w-full"
-//                     src={item.image}
-//                     alt="header"
-//                   ></img>
-//                 )}
-//               </div>
-//               <div className="absolute top-64 mx-auto inset-x-1/4">
-//                 <p className="text-white text-4xl font-bold font-inter">
-//                   {parseInt(item.id) === slideIndex && item.description}
-//                 </p>
-//               </div>
-//             </div>
-//           );
-//         })}
-//       </div>
-//       <div className="flex absolute bottom-12 left-[45%]">
-//         {slideIndex.getData.map((index: any) => {
-//           return (
-//             <div className="mr-4" key={index}>
-//               <div
-//                 className={
-//                   index === slideIndex
-//                     ? "bg-green-300 rounded-full p-4 cursor-pointer"
-//                     : "bg-white rounded-full p-4 cursor-pointer"
-//                 }
-//                 onClick={() => dispatch(dotSlide(index))}
-//               ></div>
-//             </div>
-//           );
-//         })}
-//       </div>
-//       <div>
-//         <button></button>
-//       </div>
-//     </div>
-//   );
-// }
