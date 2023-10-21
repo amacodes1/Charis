@@ -59,131 +59,152 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="checkoutPage container max-w-2xl mx-auto p-4">
+    <div className="checkoutPage p-4 mx-[1rem] sm:mx-[3rem]">
       <Heading title="Checkout" center />
-      <div className="sm:flex flex-row space-x-10">
-        <form className=" w-6/12">
-          <label
-            className="block font-bold text-xl mb-4"
-            htmlFor="billingDetails"
-          >
-            Billing Details
-          </label>
-          {/* Fullname */}
-          <div className="mb-4">
-            <label className="block font-semibold" htmlFor="full name">
-              Full Name:
-            </label>
-            <input
-              className="w-full border rounded p-2"
-              type="text"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-
-          {/* Email Address */}
-          <div className="mb-4">
-            <label className="block font-semibold" htmlFor="email">
-              Email:
-            </label>
-            <input
-              className="w-full border rounded p-2"
-              type="text"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-
-          {/* Address */}
-          <div className="mb-4">
-            <label className="block font-semibold" htmlFor="address">
-              Address:
-            </label>
-            <input
-              className="w-full border rounded p-2"
-              type="text"
-              name="address"
-              value={formData.address}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-
-          {/* City */}
-          <div className="mb-4">
-            <label className="block font-semibold" htmlFor="city">
-              City:
-            </label>
-            <input
-              className="w-full border rounded p-2"
-              type="text"
-              name="city"
-              value={formData.city}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-
-          {/* Postal code */}
-          <div className="mb-4">
-            <label className="block font-semibold" htmlFor="postalCode">
-              Postal Code:
-            </label>
-            <input
-              className="w-full border rounded p-2"
-              type="number"
-              name="postalcode"
-              value={formData.postalCode}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-
-          {/* Country */}
-          <div className="mb-4">
-            <label className="block font-semibold" htmlFor="country">
-              Country:
-            </label>
-            <input
-              className="w-full border rounded p-2"
-              type="text"
-              name="country"
-              value={formData.country}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-
-          {/* Payment method */}
-          <div className="mb-4 mt-20">
-            <label className="block font-bold text-xl" htmlFor="paymentMethod">
-              Payment Method
-            </label>
-            <select
-              className="w-full border rounded p-2"
-              name="payment method"
-              value={formData.paymentMethod}
-              onChange={handleInputChange}
+      <div className="sm:flex justify-between w-full">
+        <div className="sm:w-[55%]">
+          <form>
+            <label
+              className="block font-bold text-xl mb-4"
+              htmlFor="billingDetails"
             >
-              <option value="Paystack">Paystack</option>
-              <option value="Flutterwave">Flutterwave</option>
-              <option value="Paypal">Paypal</option>
-            </select>
-          </div>
+              Billing Details
+            </label>
 
-          {/* Place Order button */}
-          <div>
-            <Button label="Place Order" onClick={handlePlaceOrder} />
-          </div>
-        </form>
+            {/* Fullname */}
+            <div className="mb-4">
+              <label
+                className="block font-semibold text-sm"
+                htmlFor="full name"
+              >
+                Full Name:
+              </label>
+              <input
+                className="w-full border rounded p-2"
+                type="text"
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+
+            {/* Email Address */}
+            <div className="mb-4">
+              <label className="block font-semibold text-sm" htmlFor="email">
+                Email:
+              </label>
+              <input
+                className="w-full border rounded p-2"
+                type="text"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+
+            {/* Address */}
+            <div className="mb-4">
+              <label className="block font-semibold text-sm" htmlFor="address">
+                Address:
+              </label>
+              <input
+                className="w-full border rounded p-2"
+                type="text"
+                name="address"
+                value={formData.address}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+
+            {/* City */}
+            <div className="mb-4">
+              <label className="block font-semibold text-sm" htmlFor="city">
+                City:
+              </label>
+              <input
+                className="w-full border rounded p-2"
+                type="text"
+                name="city"
+                value={formData.city}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+
+            <div className="flex flex-row space-x-4">
+              {/* Country */}
+              <div className="mb-4 basis-8/12">
+                <label
+                  className="block font-semibold text-sm"
+                  htmlFor="country"
+                >
+                  Country:
+                </label>
+                <input
+                  className="w-full border rounded p-2"
+                  type="text"
+                  name="country"
+                  value={formData.country}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+
+              {/* Postal code */}
+              <div className="mb-4 basis-4/12">
+                <label
+                  className="block font-semibold text-sm"
+                  htmlFor="postalCode"
+                >
+                  Postal Code:
+                </label>
+                <input
+                  className="w-full border rounded p-2"
+                  type="number"
+                  name="postalcode"
+                  value={formData.postalCode}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Payment method */}
+            <div className="mb-4 mt-20">
+              <label
+                className="block font-bold text-xl"
+                htmlFor="paymentMethod"
+              >
+                Payment Method
+              </label>
+              <select
+                className="w-full border rounded p-2"
+                name="payment method"
+                value={formData.paymentMethod}
+                onChange={handleInputChange}
+              >
+                <option value="Paystack">Paystack</option>
+                <option value="Flutterwave">Flutterwave</option>
+                <option value="Paypal">Paypal</option>
+              </select>
+            </div>
+
+            {/* Place Order button */}
+            <div>
+              <Button
+                label="Place Order"
+                custom="bg-green-400"
+                onClick={handlePlaceOrder}
+              />
+            </div>
+          </form>
+        </div>
 
         {/* Summarize the order */}
-        <div className="orderSummary mt-8 border p-4 w-5/12">
+        <div className="orderSummary mt-8 border p-4 h-80 mr-4 sm:w-[40%]">
           <Heading title="Order Summary" center />
           <div className="mb-4 mt-2 p-2">
             <div className="p-2">
