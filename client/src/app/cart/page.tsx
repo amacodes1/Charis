@@ -118,7 +118,20 @@ export default function Cart() {
               <p className="text-slate-500">
                 Taxes and Shipping will be calculated at checkout
               </p>
-              <Button label="Checkout" onClick={() => {}} />
+
+              <Link
+                href={{
+                  pathname: "/checkout",
+                  query: { cart: JSON.stringify(cart) },
+                }}
+              >
+                <Button
+                  label="Checkout"
+                  custom="bg-green-500 text-white"
+                  onClick={() => {}}
+                />
+              </Link>
+
               <Link
                 href={"/"}
                 className="text-slate-500 flex items-center gap-1 mt-2"
