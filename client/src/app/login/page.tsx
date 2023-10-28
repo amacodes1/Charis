@@ -12,7 +12,7 @@ export default function Login() {
     email: "",
     password: "",
   });
-  const { token } = useSelector((state: any) => state?.user?.user);
+  const { token } = useSelector((state: any) => state?.comb?.user);
   const dispatch = useDispatch();
   const router = useRouter();
 

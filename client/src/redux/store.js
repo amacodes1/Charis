@@ -14,6 +14,7 @@ import UserSlice from "./userSlice";
 import cartSlice from "./cartSlice";
 import productSlice from "./productSlice";
 import sliderSlice from "./sliderSlice";
+import searchSlice from "./searchSlice";
 
 const persistConfig = {
   key: "root",
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   cart: cartSlice,
   prod: productSlice,
   slider: sliderSlice,
+  search: searchSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

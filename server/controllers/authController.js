@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const User = require ("../models/userModel");
 const bcrypt = require("bcrypt");
+const generateToken = require("../token/token");
+const verifyToken = require("../middlewares/verifyToken");
 
 
 // REGISTER
@@ -74,11 +76,6 @@ const loginControl = async (req, res) => {
                 token: generateToken(User?._id)
             });
         }
-
-        res.status(200).json({
-            success: true,
-            msg: "Login successful"
-        })
 
     } catch (err) {
         res.status(500).json(err);
