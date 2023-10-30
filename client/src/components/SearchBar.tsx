@@ -1,6 +1,7 @@
 "use client";
 
-import { setSearchQuery } from "@/redux/searchSlice";
+import { fetchSearchResults } from "@/app/api/search";
+import { setSearchQuery, setSearchResults } from "@/redux/searchSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function SearchBar() {
@@ -13,6 +14,9 @@ export default function SearchBar() {
 
     // Make an API call to fetch search results
     const results = await fetchSearchResults(searchQuery);
+
+    // Set search results in redux
+    dispatch(setSearchResults(results));
   };
   return <div>SearchBar</div>;
 }
