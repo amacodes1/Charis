@@ -91,7 +91,7 @@ export default function ProductCard() {
             </div>
             <div className="button p-3">
               <button
-                className="bg-red-500 text-white w-32 h-10 rounded-full"
+                className="bg-orange-600 text-white w-32 h-10 rounded-full"
                 onClick={() =>
                   updateCart({
                     id: product?.id,

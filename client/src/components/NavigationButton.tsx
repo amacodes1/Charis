@@ -14,14 +14,14 @@ export default function NavigationButton() {
   ];
   return (
     <div>
-      <div className="flex items-center justify-center py-8">
+      <div className="flex items-center justify-center  mt-20">
         {buttons.map((button, index) => {
           return (
             <div key={index} className="mr-4">
               <Button
                 variant="outlined"
                 color="success"
-                className="hover:bg-green-300 duration-300 ease-in"
+                className="hover:bg-green-300 bg-orange-400 text-black duration-300 ease-in"
               >
                 {button}
               </Button>

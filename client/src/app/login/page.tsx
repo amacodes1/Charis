@@ -60,11 +60,11 @@ export default function Login() {
   };
 
   return (
-    <div className="loginContainer bg-teal-100 h-screen flex flex-col justify-center items-center">
-      <span className="loginTitle">LOGIN</span>
-      <div className="bg-white h-96 w-96 rounded shadow-md shadow-black">
+    <div className="login h-max py-20 flex flex-col justify-center bg-teal-100 items-center">
+      <span className="loginTitle mb-8 text-3xl">LOGIN</span>
+      <div className="bg-white rounded-3xl shadow-md">
         <form
-          className="loginForm flex flex-col"
+          className="loginForm flex flex-col my-8 mx-10 h-1/2 w-96"
           onSubmit={handleSubmit}
           action=""
         >
@@ -87,15 +87,20 @@ export default function Login() {
             }
           />
           <button
-            className="loginButton"
+            className="loginButton mt-3 bg-red-500 border-none text-white rounded-lg p-2"
             type="submit"
             onClick={handleLinkClick}
           >
             Login
           </button>
-          <span className="items-center">
+          <span className="items-center mt-4">
             Don't have an account?{" "}
-            <Link href="/register">Create an account</Link>
+            <Link
+              href="/register"
+              className=" text-blue-600 ml-3 text-lg underline"
+            >
+              Create an account
+            </Link>
           </span>
         </form>
       </div>

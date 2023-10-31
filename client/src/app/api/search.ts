@@ -1,22 +1,23 @@
-import axios from "axios";
+// import { axiosInstance } from "@/utils/axios";
+// import axios from "axios";
 
-// Replacing the API endpoint
-const SEARCH_API_URL = "localhost:3000/search";
+// // Replacing the API endpoint
+// // const SEARCH_API_URL = "http://localhost:3000/search";
 
-// Funtion to fetch search results
-export async function fetchSearchResults(query: any) {
-  try {
-    const response = await axios.get(SEARCH_API_URL, {
-      params: { query },
-    });
+// // Funtion to fetch search results
+// export async function fetchSearchResults(query: string) {
+//   try {
+//     const response = await axiosInstance.get("/search", {
+//       params: { query },
+//     });
 
-    if (response.status === 200) {
-      return response.data;
-    } else {
-      throw new Error("Failed to fetch serch results");
-    }
-  } catch (err) {
-    console.error("Error fetching search results:", err);
-    throw err;
-  }
-}
+//     if (response.status === 200) {
+//       return response.data;
+//     } else {
+//       throw new Error("Failed to fetch serch results");
+//     }
+//   } catch (err) {
+//     console.error("Error fetching search results:", err);
+//     throw err;
+//   }
+// }

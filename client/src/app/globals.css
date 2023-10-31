@@ -40,6 +40,10 @@ nav .inputBox::placeholder {
   @apply my-2;
 }
 
+.loginForm label {
+  @apply my-2;
+}
+
 .productDetails .qtyBtn {
   @apply border-[1.2px] border-slate-300 px-2 rounded;
 }

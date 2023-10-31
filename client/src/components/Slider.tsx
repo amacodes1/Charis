@@ -19,8 +19,8 @@ export const Slider = () => {
   }, [dispatch]);
 
   return (
-    <div className="relative pb-4">
-      <div>
+    <div className="relative pb-4 bg-orange-400">
+      <div className="p-12">
         {data &&
           data.map((item: any) => (
             <div
@@ -34,7 +34,7 @@ export const Slider = () => {
               <div>
                 {parseInt(item.id) === currentIndex && (
                   <img
-                    className="h-[500px] w-full"
+                    className="h-[500px] w-full bg-orange-400"
                     src={item.image}
                     alt="header"
                   />

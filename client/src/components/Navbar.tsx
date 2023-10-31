@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ShoppingCart, User } from "phosphor-react";
 import { useSelector } from "react-redux";
+import SearchBar from "./SearchBar";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -33,7 +34,7 @@ export default function Navbar() {
   // console.log(getItemsCount());
 
   return (
-    <nav className="bg-teal-200 w-full h-24 p-4 sticky">
+    <nav className="bg-teal-200 w-full h-24 sm:p-4 p-2 sticky">
       <div className="md:hidden">
         {mobileMenuOpen ? (
           <button
@@ -147,7 +148,11 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div
+        <div>
+          <SearchBar />
+        </div>
+
+        {/* <div
           className={`flex flex-row relative ltr ml-8 md:ml-8 lg:ml-2 items-center       max-w-xs w-fit h-fit bg-black rounded-full cursor-pointer overflow-hidden ${
             mobileMenuOpen ? "hidden" : "block"
           }`}
@@ -167,7 +172,7 @@ export default function Navbar() {
             id="inputBox"
             type="text"
           />
-        </div>
+        </div> */}
 
         <div className="account ml-4">
           <Link href="/register">

@@ -41,11 +41,11 @@ export default function Register() {
   };
 
   return (
-    <div className="register h-max flex flex-col justify-center bg-teal-100 items-center">
-      <span className="registerTitle mb-2 text-3xl">CREATE AN ACCOUNT</span>
-      <div className="bg-white rounded shadow-md shadow-black">
+    <div className="register h-max py-28 flex flex-col justify-center bg-teal-100 items-center">
+      <span className="registerTitle mb-8 text-3xl">CREATE AN ACCOUNT</span>
+      <div className="bg-white rounded-3xl shadow-md">
         <form
-          className="registerForm mt-2 mx-20 h-1/2 w-96 flex flex-col"
+          className="registerForm my-8 mx-10 h-1/2 w-96 flex flex-col"
           onSubmit={handleSubmit}
           action=""
         >
@@ -90,8 +90,14 @@ export default function Register() {
           >
             Register
           </button>
-          <span className="items-center">
-            Already have an account? <Link href="/login">Login</Link>
+          <span className="items-center mt-4">
+            Already have an account?{" "}
+            <Link
+              href="/login"
+              className=" text-blue-600 ml-3 text-lg underline"
+            >
+              Login
+            </Link>
           </span>
         </form>
       </div>
