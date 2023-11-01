@@ -10,6 +10,8 @@ import { setProducts } from "@/redux/productSlice";
 import { truncateText } from "@/utils/truncateText";
 import { Rating } from "@mui/material";
 import { toast } from "react-toastify";
+import { axiosInstance } from "@/utils/axios";
+import { NextApiResponse } from "next";
 
 export default function ProductCard() {
   const dispatch = useDispatch();
@@ -40,7 +42,7 @@ export default function ProductCard() {
   };
 
   const getProductCard = async () => {
-    const res = await fetch("https://fakestoreapi.com/products");
+    const res: any = await axiosInstance.post<NextApiResponse>("/products");
     const data = await res.json();
     dispatch(setProducts(data));
   };

@@ -16,7 +16,6 @@ export default function Loading() {
         wrapperClass=""
         visible={true}
       />
-      {/* <p className="text-sm text-orange-500">Loading .....</p> */}
     </div>
   );
 }

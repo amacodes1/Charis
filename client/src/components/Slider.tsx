@@ -19,7 +19,7 @@ export const Slider = () => {
   }, [dispatch]);
 
   return (
-    <div className="relative pb-4 bg-orange-400">
+    <div className="relative pb-4 bg-orange-400 z-0">
       <div className="p-12">
         {data &&
           data.map((item: any) => (
@@ -31,19 +31,21 @@ export const Slider = () => {
                   : "opacity-0 duration-700 ease-in-out scale-95"
               }
             >
-              <div>
-                {parseInt(item.id) === currentIndex && (
-                  <img
-                    className="h-[500px] w-full bg-orange-400"
-                    src={item.image}
-                    alt="header"
-                  />
-                )}
-              </div>
-              <div className="absolute top-64 mx-auto inset-x-1/4">
-                <p className="text-white text-4xl font-bold font-inter">
-                  {parseInt(item.id) === currentIndex && item.description}
-                </p>
+              <div className="flex">
+                <div className="">
+                  <p className="text-black text-4xl font-bold font-kanit">
+                    {parseInt(item.id) === currentIndex && item.title}
+                  </p>
+                </div>
+                <div>
+                  {parseInt(item.id) === currentIndex && (
+                    <img
+                      className="h-[500px] w-96 mr-4 bg-orange-400"
+                      src={item.image}
+                      alt="header"
+                    />
+                  )}
+                </div>
               </div>
             </div>
           ))}

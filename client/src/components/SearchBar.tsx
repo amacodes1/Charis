@@ -50,7 +50,8 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import { setSearchQuery, setSearchResults } from "../redux/searchSlice";
-import axios from "axios";
+// import axios from "axios";
+import { axiosInstance } from "@/utils/axios";
 
 export default function Search() {
   const searchQuery = useSelector((state: any) => state.comb.search.query);
@@ -64,7 +65,9 @@ export default function Search() {
     event.preventDefault();
 
     try {
-      const response = await axios.get(`/app/search?query=${searchQuery}`);
+      const response = await axiosInstance.get(`/search?query=${searchQuery}`);
+      console.log("Request URL:", `/search?query=${searchQuery}`);
+
       const results = response.data;
 
       // Update the search query in the Redux store

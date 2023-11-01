@@ -1,17 +1,54 @@
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
-export default function Pagination() {
-      const products = useSelector((state: any) => state.comb.prod.allProduct);
+// export default function Pagination() {
+//       const products = useSelector((state: any) => state.comb.prod.allProduct);
+
+//   return (
+//     <div>
+//         <ul className="flex">
+//             {products.length > 0 &&
+//              [...Array{pages: any}.keys()].map({pageNumber} => {
+
+//              })
+//             }
+//         </ul>
+//     </div>
+//   )
+// }
+
+import ReactPaginate from "react-paginate";
+
+const Pagination = (props) => {
+  const { totalPages, onPagination } = props;
+
+  const handlePageClick = (event) => {
+    onPagination("pagination", event.selected + 1);
+  };
 
   return (
-    <div>
-        <ul className="flex">
-            {products.length > 0 &&
-             [...Array{pages: any}.keys()].map({pageNumber} => {
-                
-             })
-            }
-        </ul>
+    <div className="pagination-box">
+      <ReactPaginate
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={2}
+        pageCount={totalPages} // The total number of pages.
+        previousLabel="< previous"
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        breakLabel="..."
+        breakClassName="page-item"
+        breakLinkClassName="page-link"
+        containerClassName="pagination"
+        activeClassName="active"
+        renderOnZeroPageCount={null}
+      />
     </div>
-  )
-}
+  );
+};
+
+export default Pagination;

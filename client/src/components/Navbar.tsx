@@ -110,14 +110,11 @@ export default function Navbar() {
               >
                 Categories
               </Link>
-              <div className="hidden group-hover:block absolute space-y-4 bg-black text-white px-6 py-6 gap-4 w-36 top-full left-16">
+              <div className="hidden group-hover:block absolute space-y-4 bg-black text-white px-6 py-6 gap-4 w-36 top-full left-16 z-auto">
                 <Link href="#" className="block text-white hover:text-gray-300">
                   Music
                 </Link>
-                <Link
-                  href="#"
-                  className="block text-white hover:text-gray-300 "
-                >
+                <Link href="#" className="block text-white hover:text-gray-300">
                   Movies
                 </Link>
                 <Link href="#" className="block text-white hover:text-gray-300">
