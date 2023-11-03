@@ -19,7 +19,7 @@ export const Slider = () => {
   }, [dispatch]);
 
   return (
-    <div className="relative pb-4 bg-orange-400 z-0">
+    <div className="relative pb-4 bg-orange-500 z-0">
       <div className="p-12">
         {data &&
           data.map((item: any) => (

@@ -52,10 +52,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSearchQuery, setSearchResults } from "../redux/searchSlice";
 // import axios from "axios";
 import { axiosInstance } from "@/utils/axios";
+import { useDebounce } from "use-debounce";
 
 export default function Search() {
   const searchQuery = useSelector((state: any) => state.comb.search.query);
   const dispatch = useDispatch();
+  const [debounce] = useDebounce(searchQuery, 500);
 
   const handleSearchInputChange = (event: any) => {
     dispatch(setSearchQuery(event.target.value));
@@ -95,7 +97,7 @@ export default function Search() {
           placeholder="Search products"
           id="inputBox"
           type="text"
-          value={searchQuery}
+          value={debounce}
           onChange={handleSearchInputChange}
         />
       </div>

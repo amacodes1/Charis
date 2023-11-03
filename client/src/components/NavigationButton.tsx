@@ -21,7 +21,7 @@ export default function NavigationButton() {
               <Button
                 variant="outlined"
                 color="success"
-                className="hover:bg-green-300 bg-orange-400 text-black duration-300 ease-in"
+                className="hover:bg-green-300 bg-orange-600 text-black duration-300 ease-in"
               >
                 {button}
               </Button>

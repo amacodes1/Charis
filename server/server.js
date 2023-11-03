@@ -7,6 +7,7 @@ const authRoute = require("./routes/authRoute");
 const userRoute = require("./routes/userRoute");
 const categoryRoute = require("./routes/categoryRoute");
 const productRoute = require("./routes/productRoute");
+// const searchRoute = require("./routes/searchRoute");
 const cors = require("cors");
 const multer = require("multer");
 
@@ -34,6 +35,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/categories", categoryRoute);
 app.use("/api/products", productRoute);
+// app.use("/api/search", searchRoute);
 
 // connect to mongodb database
 
