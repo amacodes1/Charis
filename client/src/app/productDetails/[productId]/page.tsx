@@ -89,13 +89,17 @@ export default function ProductDetails({ params }: { params: IParams }) {
 
   const handleViewProduct = (product: any) => {
     dispatch(addRecentlyViewed(product));
-  };
 
-  useEffect(() => {
     if (selectedProduct) {
       handleViewProduct(selectedProduct);
     }
-  }, [selectedProduct]);
+  };
+
+  // useEffect(() => {
+  //   if (selectedProduct) {
+  //     handleViewProduct(selectedProduct);
+  //   }
+  // }, [selectedProduct]);
 
   const handleAddToCart = () => {
     dispatch(addToCart({ ...cartProduct, quantity }));
