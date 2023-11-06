@@ -45,7 +45,7 @@ export default function Products2() {
 
   useEffect(() => {
     getProducts2();
-  }, []);
+  });
 
   return (
     <div className="productsWrapper container mx-auto my-8 md:px-5 py-10 ">
@@ -54,7 +54,10 @@ export default function Products2() {
       </h1>
       <div className="cardsWrapper grid md:grid-cols-2 lg:grid-cols-3 gap-y-6 md:gap-14">
         {products.map((product: any) => (
-          <div className="card col-span-1 cursor-pointer border-[1.2px] border-slate-200 bg-slate-50 rounded-sm p-2  text-center text-sm">
+          <div
+            className="card col-span-1 cursor-pointer border-[1.2px] border-slate-200 bg-slate-50 rounded-sm p-2  text-center text-sm"
+            key={product?.id}
+          >
             <div
               onClick={() => router.push(`/productDetails/${product?.id}`)}
               key={product?.id}

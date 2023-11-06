@@ -16,7 +16,7 @@ export default function RecentlyViewed() {
 
   useEffect(() => {
     getRecentlyViewedCard();
-  }, []);
+  });
 
   return (
     <div>

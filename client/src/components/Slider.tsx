@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { setData, nextSlide, prevSlide, dotSlide } from "@/redux/sliderSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Image from "next/image";
 
 export const Slider = () => {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ export const Slider = () => {
                 </div>
                 <div>
                   {parseInt(item.id) === currentIndex && (
-                    <img
+                    <Image
                       className="h-[500px] w-96 mr-4 bg-orange-400"
                       src={item.image}
                       alt="header"

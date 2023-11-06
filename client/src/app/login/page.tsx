@@ -27,7 +27,7 @@ export default function Login() {
         return router.push("/");
       }
     }
-  }, [token]);
+  });
 
   const handleSubmit = async () => {
     // e.preventDefault();
@@ -96,7 +96,7 @@ export default function Login() {
             Login
           </button>
           <span className="items-center mt-4">
-            Don't have an account?{" "}
+            Don't have an account? `&lsquo;`
             <Link
               href="/register"
               className=" text-blue-600 ml-3 text-lg underline"
