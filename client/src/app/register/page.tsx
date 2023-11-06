@@ -32,8 +32,8 @@ export default function Register() {
         password,
       });
       dispatch(update({ token: res.data.token }));
+      toast.success("You have registered successfully");
       console.log(res.data);
-      toast.success("Logged in successfully");
       return router.push("/login");
     } catch (err) {
       seterror(true);

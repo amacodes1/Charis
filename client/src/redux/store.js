@@ -29,7 +29,7 @@ const rootReducer = combineReducers({
   prod: productSlice,
   slider: sliderSlice,
   search: searchSlice,
-  recentlyViewed: recentlyViewedSlice,
+  recently: recentlyViewedSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

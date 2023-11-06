@@ -10,6 +10,7 @@ import Button from "@/components/Button";
 import { MdCheckCircle } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { addRecentlyViewed } from "@/redux/recentlyViewedSlice";
 // import { ListRating } from "@/components/products/ListRating";
 // import ProductImages from "@/components/products/ProductImages";
 // import SetColor from "@/components/products/SetColor";
@@ -85,6 +86,16 @@ export default function ProductDetails({ params }: { params: IParams }) {
       </div>
     );
   }
+
+  const handleViewProduct = (product: any) => {
+    dispatch(addRecentlyViewed(product));
+  };
+
+  useEffect(() => {
+    if (selectedProduct) {
+      handleViewProduct(selectedProduct);
+    }
+  }, [selectedProduct]);
 
   const handleAddToCart = () => {
     dispatch(addToCart({ ...cartProduct, quantity }));
