@@ -96,7 +96,7 @@ export default function Login() {
             Login
           </button>
           <span className="items-center mt-4">
-            Don't have an account? `&lsquo;`
+            Don`&apos;`t have an account?{" "}
             <Link
               href="/register"
               className=" text-blue-600 ml-3 text-lg underline"

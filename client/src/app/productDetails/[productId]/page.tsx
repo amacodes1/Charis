@@ -95,7 +95,7 @@ export default function ProductDetails({ params }: { params: IParams }) {
     if (selectedProduct) {
       handleViewProduct(selectedProduct);
     }
-  });
+  }, [selectedProduct]);
 
   const handleAddToCart = () => {
     dispatch(addToCart({ ...cartProduct, quantity }));
