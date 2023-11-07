@@ -27,7 +27,7 @@ export default function Login() {
         return router.push("/");
       }
     }
-  });
+  }, []);
 
   const handleSubmit = async () => {
     // e.preventDefault();
