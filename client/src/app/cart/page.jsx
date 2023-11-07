@@ -13,12 +13,12 @@ import Link from "next/link";
 import { MdArrowBack } from "react-icons/md";
 
 export default function Cart() {
-  const cart = useSelector((state: any) => state?.comb?.cart?.productList);
+  const cart = useSelector((state) => state?.comb?.cart?.productList);
   const dispatch = useDispatch();
 
   // console.log(cart);
 
-  const handleRemove = (id: string) => {
+  const handleRemove = (id) => {
     dispatch(removeItem(id));
   };
 
@@ -31,7 +31,7 @@ export default function Cart() {
       return 0;
     }
     return cart.reduce(
-      (accumulator: any, item: any) => accumulator + item.quantity * item.price,
+      (accumulator, item) => accumulator + item.quantity * item.price,
       0
     );
   };
@@ -60,7 +60,7 @@ export default function Cart() {
             <div>Actions</div>
             <div>Total Price</div>
           </div>
-          {cart?.map((item: any, index: any) => (
+          {cart?.map((item, index) => (
             <li key={index}>
               <div className="body flex justify-between items-center text-center mb-4">
                 <div className="image w-28">
