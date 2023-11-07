@@ -42,6 +42,7 @@ export default function CheckoutPage() {
     const totalPrice = itemsPrice + shippingPrice + taxPrice;
 
     setOrderSummary({ itemsPrice, shippingPrice, taxPrice, totalPrice });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cart]);
 
   const handleInputChange = (e) => {

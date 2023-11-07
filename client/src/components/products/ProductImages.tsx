@@ -5,7 +5,7 @@ import {
   SelectedImgType,
 } from "@/app/productDetails/[productId]/page";
 import React from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import Image from "next/image";
 
 interface ProductImageProps {

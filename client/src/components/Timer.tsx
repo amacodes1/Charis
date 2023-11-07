@@ -23,6 +23,7 @@ export default function Timer() {
     return () => {
       clearInterval(interval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));

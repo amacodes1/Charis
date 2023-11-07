@@ -13,7 +13,6 @@ interface SetColorProps {
 }
 
 const SetColor: React.FC<SetColorProps> = ({
-  product,
   cartProduct,
   handleColorSelect,
 }) => {

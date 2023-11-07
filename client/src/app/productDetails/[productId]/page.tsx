@@ -76,6 +76,7 @@ export default function ProductDetails({ params }: { params: IParams }) {
         setIsProductInCart(true);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product]);
 
   if (!product) {

@@ -49,6 +49,7 @@ export default function ProductCard() {
 
   useEffect(() => {
     getProductCard();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   });
 
   return (

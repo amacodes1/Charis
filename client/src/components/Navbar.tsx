@@ -22,6 +22,7 @@ export default function Navbar() {
     window.addEventListener("resize", () => {
       setWindowWidth(window.innerWidth);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Getting the count of items on the cart icon
