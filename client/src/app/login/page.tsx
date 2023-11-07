@@ -40,7 +40,7 @@ export default function Login() {
       .then((res) => {
         dispatch(update({ token: res.data.token }));
         // toast.success("Login successfully");
-        console.log(res.data);
+        // console.log(res.data);
         const targetUrl = sessionStorage.getItem("targetUrl");
         if (targetUrl) {
           sessionStorage.removeItem("targetUrl");
