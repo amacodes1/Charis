@@ -13,7 +13,7 @@ import Link from "next/link";
 import { MdArrowBack } from "react-icons/md";
 
 export default function Cart() {
-  const cart = useSelector((state: any) => state.comb.cart.productList);
+  const cart = useSelector((state: any) => state?.comb?.cart?.productList);
   const dispatch = useDispatch();
 
   // console.log(cart);
@@ -125,11 +125,14 @@ export default function Cart() {
                   query: { cart: JSON.stringify(cart) },
                 }}
               >
-                <Button
+                <button type="submit" className="bg-green-500 text-white w-36">
+                  CheckOut
+                </button>
+                {/* <Button
                   label="Checkout"
                   custom="bg-green-500 text-white"
                   onClick={() => {}}
-                />
+                /> */}
               </Link>
 
               <Link
