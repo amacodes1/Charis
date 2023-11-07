@@ -4,7 +4,7 @@
 import { Heading } from "@/components/Heading";
 // import { clearCart } from "@/redux/cartSlice";
 // import { useRouter } from "next/navigation";
-import Script from "next/script";
+// import Script from "next/script";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { usePaystackPayment } from "react-paystack";
@@ -102,7 +102,7 @@ export default function CheckoutPage() {
       <div className="sm:flex justify-between w-full">
         <div className="sm:w-[55%]">
           <form>
-            <Script src="https://js.paystack.co/v1/inline.js"></Script>
+            {/* <Script src="https://js.paystack.co/v1/inline.js"></Script> */}
             <label
               className="block font-bold text-xl mb-4"
               htmlFor="billingDetails"
