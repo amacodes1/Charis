@@ -2,17 +2,17 @@
 
 // import Button from "@/components/Button";
 import { Heading } from "@/components/Heading";
-import { clearCart } from "@/redux/cartSlice";
-import { useRouter } from "next/navigation";
+// import { clearCart } from "@/redux/cartSlice";
+// import { useRouter } from "next/navigation";
 import Script from "next/script";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { usePaystackPayment } from "react-paystack";
 
 export default function CheckoutPage() {
   const cart = useSelector((state) => state.comb.cart.productList);
-  const dispatch = useDispatch();
-  const router = useRouter();
+  // const dispatch = useDispatch();
+  // const router = useRouter();
 
   const [formData, setFormData] = useState({
     fullName: "",
