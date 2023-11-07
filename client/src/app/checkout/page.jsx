@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@/components/Button";
+// import Button from "@/components/Button";
 import { Heading } from "@/components/Heading";
 import { clearCart } from "@/redux/cartSlice";
 import { useRouter } from "next/navigation";
@@ -52,13 +52,13 @@ export default function CheckoutPage() {
     });
   };
 
-  const handlePlaceOrder = () => {
-    // clear cart after a succesful order creation
-    dispatch(clearCart());
+  // const handlePlaceOrder = () => {
+  //   // clear cart after a succesful order creation
+  //   dispatch(clearCart());
 
-    // redirect to a confirmation page
-    router.push("/order-confirmation");
-  };
+  //   // redirect to a confirmation page
+  //   router.push("/order-confirmation");
+  // };
 
   // Paystack logic
   const config = {
