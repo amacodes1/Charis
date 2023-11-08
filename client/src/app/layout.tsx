@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: "Charis",
   description: "created by amacodes",
 };
+
 export default function RootLayout({
   children,
 }: {
