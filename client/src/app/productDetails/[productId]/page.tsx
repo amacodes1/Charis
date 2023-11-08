@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "@/app/loading";
 import { addToCart } from "@/redux/cartSlice";
@@ -54,7 +54,7 @@ export default function ProductDetails({ params }: { params: IParams }) {
   // console.log("selectedProduct:", selectedProduct);
   // console.log(product);
 
-  const [cartProduct, setCartProduct] = useState<CartProductType>({
+  const [cartProduct] = useState<CartProductType>({
     id: selectedProduct?.id,
     title: selectedProduct?.title,
     description: selectedProduct?.description,

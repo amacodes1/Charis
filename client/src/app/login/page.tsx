@@ -28,7 +28,7 @@ export default function Login() {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token, router]);
+  }, [token]);
 
   const handleSubmit = async () => {
     // e.preventDefault();

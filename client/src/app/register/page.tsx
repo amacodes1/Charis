@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { useDispatch, useStore } from "react-redux";
+import { useDispatch } from "react-redux";
 import { axiosInstance } from "../../utils/axios";
 import { update } from "../../redux/userSlice";
 import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import Link from "next/link";
 
 export default function Register() {
@@ -13,11 +13,11 @@ export default function Register() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setrole] = useState("");
+  // const [role, setrole] = useState("");
   const [error, seterror] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
-  const store = useStore();
+  // const store = useStore();
 
   const handleSubmit = async () => {
     // e.preventDefault();
@@ -32,7 +32,7 @@ export default function Register() {
         password,
       });
       dispatch(update({ token: res.data.token }));
-      toast.success("You have registered successfully");
+      // toast.success("You have registered successfully");
       console.log(res.data);
       return router.push("/login");
     } catch (err) {
