@@ -10,7 +10,6 @@ import Loading from "./loading";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/ReactToastify.css";
-import RecentlyViewed from "@/components/RecentlyViewed";
 
 export default function Home() {
   const [loading] = useState();
@@ -26,7 +25,6 @@ export default function Home() {
             <ProductCard />
             <Timer />
             <Products2 />
-            <RecentlyViewed />
             <Newsletter />
           </>
         )}

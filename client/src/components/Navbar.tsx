@@ -111,7 +111,7 @@ export default function Navbar() {
               >
                 Categories
               </Link>
-              <div className="hidden group-hover:block absolute space-y-4 bg-black text-white px-6 py-6 gap-4 w-36 top-full left-16 z-auto">
+              <div className="hidden group-hover:block absolute space-y-4 bg-black text-white px-6 py-6 gap-4 w-36 top-full left-16 z-20">
                 <Link href="#" className="block text-white hover:text-gray-300">
                   Music
                 </Link>
