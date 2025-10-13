@@ -4,11 +4,15 @@ import Link from "next/link";
 import { ShoppingCart, User } from "phosphor-react";
 import { useSelector } from "react-redux";
 import SearchBar from "./SearchBar";
+import { RootState } from "@/redux/store";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(1000);
-  const cart = useSelector((state: any) => state.comb.cart.productList);
+  const cart = useSelector(
+    (state: RootState) => state.cart?.productList ?? []
+  );
+
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -180,10 +184,10 @@ export default function Navbar() {
 
         <div className="cart ml-4 relative">
           <Link href="/cart">
-            <div className="border border-black rounded-lg shadow-lg border-spacing-4">
+            <div className="rounded-lg shadow-lg border-spacing-4">
               <ShoppingCart size={32} className="" />
             </div>
-            <span className="text-xs align-top bg-red-500 text-white rounded-full p-1 absolute -top-3 -right-3">
+            <span className="text-xs align-top bg-red-500 text-white rounded-full p-1 absolute -top-2 -right-2">
               ({getItemsCount()})
             </span>
           </Link>

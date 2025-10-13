@@ -8,9 +8,10 @@ import { Heading } from "@/components/Heading";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { usePaystackPayment } from "react-paystack";
+import { RootState } from "@/redux/store";
 
 export default function CheckoutPage() {
-  const cart = useSelector((state) => state.comb.cart.productList);
+  const cart = useSelector((state: RootState) => state.cart.productList);
   // const dispatch = useDispatch();
   // const router = useRouter();
 
@@ -45,7 +46,7 @@ export default function CheckoutPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cart]);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -69,8 +70,8 @@ export default function CheckoutPage() {
     publicKey: "pk_test_d52da3f7bd43b9df9f5bc3f32eba8daea456eeff",
   };
 
-  const onSuccess = (e) => {
-    console.log(e);
+  const onSuccess = () => {
+    console.log("Payment successful");
   };
   const onClose = () => {
     console.log("closed");

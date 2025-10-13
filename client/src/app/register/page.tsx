@@ -31,7 +31,7 @@ export default function Register() {
         email,
         password,
       });
-      dispatch(update({ token: res.data.token }));
+      dispatch(update({ token: res.data.token, user: res.data.user || {} }));
       // toast.success("You have registered successfully");
       console.log(res.data);
       return router.push("/login");

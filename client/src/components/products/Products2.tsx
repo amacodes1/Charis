@@ -9,11 +9,12 @@ import { useRouter } from "next/navigation";
 import { setProducts } from "@/redux/productSlice";
 import { truncateText } from "@/utils/truncateText";
 import { Rating } from "@mui/material";
+import { RootState } from "@/redux/store";
 
 export default function Products2() {
   const dispatch = useDispatch();
   const router = useRouter();
-  const products = useSelector((state: any) => state.comb.prod.allProduct);
+  const products = useSelector((state: RootState) => state.prod.allProduct);
 
   const updateCart = ({
     id,
@@ -38,10 +39,11 @@ export default function Products2() {
   };
 
   const getProducts2 = async () => {
-    const res = await fetch("https://fakestoreapi.com/products");
+    const res = await fetch("/api/products");
     const data = await res.json();
     dispatch(setProducts(data));
   };
+
 
   useEffect(() => {
     getProducts2();
@@ -93,7 +95,7 @@ export default function Products2() {
             </div>
             <div className="button p-3">
               <button
-                className="bg-red-500 text-white w-32 h-10 rounded-full"
+                className="bg-teal-200 text-gray-800 w-32 h-10 rounded-full"
                 onClick={() =>
                   updateCart({
                     id: product?.id,

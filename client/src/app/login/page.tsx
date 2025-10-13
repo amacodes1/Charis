@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { axiosInstance } from "../../utils/axios";
 import { logout, update } from "../../redux/userSlice";
 import Link from "next/link";
+import { RootState } from "@/redux/store";
 // import { toast } from "react-toastify";
 
 export default function Login() {
@@ -13,7 +14,7 @@ export default function Login() {
     email: "",
     password: "",
   });
-  const { token } = useSelector((state: any) => state?.comb?.user);
+  const { token } = useSelector((state: RootState) => state?.user);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -39,7 +40,7 @@ export default function Login() {
         password: userData.password,
       })
       .then((res) => {
-        dispatch(update({ token: res.data.token }));
+        dispatch(update({ token: res.data.token, user: res.data.user || {} }));
         // toast.success("Login successfully");
         // console.log(res.data);
         const targetUrl = sessionStorage.getItem("targetUrl");

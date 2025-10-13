@@ -4,72 +4,73 @@ import { useEffect } from "react";
 import { setData, nextSlide, prevSlide, dotSlide } from "@/redux/sliderSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
+import { RootState } from "@/redux/store";
+import { sliderData } from "@/data/sliderData";
 
 export const Slider = () => {
   const dispatch = useDispatch();
-  const { data, currentIndex } = useSelector((state: any) => state.comb.slider);
+  const { data, currentIndex } = useSelector(
+    (state: RootState) => state.slider
+  );
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("https://fakestoreapi.com/products?limit=4");
-      const jsonData = await res.json();
-      dispatch(setData(jsonData));
-    };
-
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    dispatch(setData(sliderData));
   }, [dispatch]);
 
   return (
-    <div className="relative pb-4 bg-orange-500 z-0">
-      <div className="p-12">
-        {data &&
-          data.map((item: any) => (
-            <div
-              key={item.id}
-              className={
-                parseInt(item.id) === currentIndex
-                  ? "opacity-100 duration-700 ease-in-out scale-100"
-                  : "opacity-0 duration-700 ease-in-out scale-95"
-              }
-            >
-              <div className="flex">
-                <div className="">
-                  <p className="text-black text-4xl font-bold font-kanit">
-                    {parseInt(item.id) === currentIndex && item.title}
-                  </p>
-                </div>
-                <div>
-                  {parseInt(item.id) === currentIndex && (
-                    <Image
-                      className="h-[500px] w-96 mr-4 bg-orange-400"
-                      src={item.image}
-                      alt="header"
-                    />
-                  )}
-                </div>
+    <div className="relative pb-4 z-0 h-[500px]">
+      {data &&
+        data.map((item: any, index: number) => (
+          <div
+            key={item.id}
+            className={
+              index === currentIndex
+                ? "absolute inset-0 opacity-100 duration-700 ease-in-out"
+                : "absolute inset-0 opacity-0 duration-700 ease-in-out"
+            }
+            style={{
+              backgroundImage: `url(${item.image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+            <div className="relative z-10 h-full flex items-center p-12">
+              <div className="w-2/5">
+                <p className="text-white text-[50px] font-bold font-kanit mb-4">
+                  {index === currentIndex && item.title}
+                </p>
+                {index === currentIndex && item.desc && (
+                  <p className="text-white text-lg mb-6">{item.desc}</p>
+                )}
+                {index === currentIndex && (
+                  <button className="bg-teal-200 hover:bg-teal-300 text-black w-60 px-6 py-4 rounded-lg font-semibold transition-colors">
+                    Shop Now
+                  </button>
+                )}
               </div>
             </div>
-          ))}
-      </div>
-      <div className="flex absolute bottom-12 left-[45%]">
+          </div>
+        ))}
+      <div className="flex absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20">
         {data &&
-          data.map((item: any) => (
+          data.map((item: any, index: number) => (
             <div className="mr-4" key={item.id}>
               <div
                 className={
-                  item.id === currentIndex
-                    ? "bg-green-300 rounded-full p-4 cursor-pointer"
-                    : "bg-white rounded-full p-4 cursor-pointer"
+                  index === currentIndex
+                    ? "bg-green-300 rounded-full p-1 cursor-pointer"
+                    : "bg-white rounded-full p-1 cursor-pointer"
                 }
-                onClick={() => dispatch(dotSlide(item.id))}
+                onClick={() => dispatch(dotSlide(index))}
               ></div>
             </div>
           ))}
       </div>
       <div>
         <button
-          className="absolute top-[50%] left-4 bg-white rounded-full p-2 hover:bg-green-300"
+          className="absolute top-[50%] left-4 bg-white rounded-full p-2 hover:bg-green-300 z-20"
           onClick={() => dispatch(prevSlide())}
         >
           <svg
@@ -88,7 +89,7 @@ export const Slider = () => {
           </svg>
         </button>
         <button
-          className="absolute top-[50%] right-4 bg-white rounded-full p-2 hover:bg-green-300"
+          className="absolute top-[50%] right-4 bg-white rounded-full p-2 hover:bg-green-300 z-20"
           onClick={() => dispatch(nextSlide())}
         >
           <svg

@@ -1,14 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+interface Product {
+  id: string;
+  [key: string]: any;
+}
+
+interface RecentlyViewedState {
+  viewedProducts: Product[];
+  maxViewedProducts: number;
+}
+
+const initialState: RecentlyViewedState = {
+  viewedProducts: [],
+  maxViewedProducts: 5,
+};
 
 const recentlyViewedSlice = createSlice({
   name: "recentlyViewed",
-  initialState: {
-    viewedProducts: [],
-    maxViewedProducts: 5,
-  },
+  initialState,
 
   reducers: {
-    addRecentlyViewed: (state, action) => {
+    addRecentlyViewed: (state, action: PayloadAction<Product>) => {
       state.viewedProducts.unshift(action.payload);
 
       // Limit the number of viewed products to the 5 newest ones

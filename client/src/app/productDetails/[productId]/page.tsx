@@ -11,6 +11,7 @@ import { MdCheckCircle } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { addRecentlyViewed } from "@/redux/recentlyViewedSlice";
+import { RootState } from "@/redux/store";
 // import { ListRating } from "@/components/products/ListRating";
 // import ProductImages from "@/components/products/ProductImages";
 // import SetColor from "@/components/products/SetColor";
@@ -40,7 +41,7 @@ const HorizontalLine = () => {
 };
 
 export default function ProductDetails({ params }: { params: IParams }) {
-  const product = useSelector((state: any) => state.comb.prod.allProduct);
+  const product = useSelector((state: RootState) => state.prod.allProduct);
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
   const [isProductInCart, setIsProductInCart] = useState(false);
@@ -54,22 +55,32 @@ export default function ProductDetails({ params }: { params: IParams }) {
   // console.log("selectedProduct:", selectedProduct);
   // console.log(product);
 
-  const [cartProduct] = useState<CartProductType>({
-    id: selectedProduct?.id,
-    title: selectedProduct?.title,
-    description: selectedProduct?.description,
-    category: selectedProduct?.category,
-    selectedImg: { ...selectedProduct?.image[0] },
-    quantity: 1,
-    price: selectedProduct?.price,
-  });
+  const [cartProduct, setCartProduct] = useState<CartProductType | null>(null);
+
+  useEffect(() => {
+    if (selectedProduct) {
+      setCartProduct({
+        id: selectedProduct.id.toString(),
+        title: selectedProduct.title,
+        description: selectedProduct.description,
+        category: selectedProduct.category,
+        selectedImg: {
+          color: 'default',
+          colorCode: '#000000',
+          image: selectedProduct.image
+        },
+        quantity: 1,
+        price: selectedProduct.price,
+      });
+    }
+  }, [selectedProduct]);
 
   useEffect(() => {
     setIsProductInCart(false);
 
-    if (product) {
+    if (product && selectedProduct) {
       const existingIndex = product.findIndex(
-        (item: any) => item.id === product.id
+        (item: any) => item.id.toString() === selectedProduct.id.toString()
       );
 
       if (existingIndex > -1) {
@@ -77,7 +88,7 @@ export default function ProductDetails({ params }: { params: IParams }) {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [product]);
+  }, [product, selectedProduct]);
 
   if (!product) {
     return (
@@ -103,10 +114,11 @@ export default function ProductDetails({ params }: { params: IParams }) {
   // }, [selectedProduct]);
 
   const handleAddToCart = () => {
-    dispatch(addToCart({ ...cartProduct, quantity }));
-    console.log("product added to cart");
-
-    toast.success("Product added to cart");
+    if (cartProduct) {
+      dispatch(addToCart({ ...cartProduct, quantity }));
+      console.log("product added to cart");
+      toast.success("Product added to cart");
+    }
   };
 
   const handleIncrement = () => {

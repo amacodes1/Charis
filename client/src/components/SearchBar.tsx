@@ -52,10 +52,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSearchQuery, setSearchResults } from "../redux/searchSlice";
 // import axios from "axios";
 import { axiosInstance } from "@/utils/axios";
+import { RootState } from "@/redux/store";
 // import { useDebounce } from "use-debounce";
 
 export default function Search() {
-  const searchQuery = useSelector((state: any) => state.comb.search.query);
+  const searchQuery = useSelector((state: RootState) => state.search.query);
   const dispatch = useDispatch();
   // const [debounce] = useDebounce(searchQuery, 500);
 
