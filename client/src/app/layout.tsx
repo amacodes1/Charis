@@ -47,6 +47,7 @@ import Footer from "../components/Footer";
 import Offers from "../components/Offers";
 import ClientPersistGate from "@/components/ClientPersistGate";
 import ReduxProvider from "@/redux/ReduxProvider";
+import NavigationLinks from "@/components/NavigationLinks";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -66,6 +67,7 @@ export default function RootLayout({
         <ReduxProvider>
           <ClientPersistGate>
             <Navbar />
+            <NavigationLinks />
             {children}
             <Offers />
             <Footer />
