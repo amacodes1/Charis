@@ -11,15 +11,26 @@ import { Heading } from "@/components/Heading";
 import Button from "@/components/Button";
 import Link from "next/link";
 import { MdArrowBack } from "react-icons/md";
+import { RootState } from "@/redux/store";
 
 export default function Cart() {
-  const cart = useSelector((state) => state?.comb?.cart?.productList);
+  const cart = useSelector((state: RootState) => state?.cart?.productList);
   const dispatch = useDispatch();
 
   // console.log(cart);
 
-  const handleRemove = (id) => {
-    dispatch(removeItem(id));
+  interface CartItem {
+    id: string | number;
+    title: string;
+    image: string;
+    price: number;
+    quantity: number;
+  }
+
+  type RemoveItemId = CartItem["id"];
+
+  const handleRemove = (id: RemoveItemId): void => {
+    dispatch(removeItem(String(id)));
   };
 
   const handleClearCart = () => {
@@ -38,7 +49,7 @@ export default function Cart() {
   // console.log(getTotalPrice());
 
   return (
-    <div className="cart container p-8 text-center justify-center">
+    <div className="cart py-8 px-20 text-center justify-center">
       <Heading title="Shopping Cart" center />
       {cart?.length === 0 ? (
         <div>
@@ -79,11 +90,17 @@ export default function Cart() {
                 <p>${item.price}</p>
 
                 <div className="buttons">
-                  <button onClick={() => dispatch(decrementQuantity(item.id))}>
+                  <button
+                    className="w-6 h-8 bg-black text-white border-none m-2 text-base"
+                    onClick={() => dispatch(decrementQuantity(String(item.id)))}
+                  >
                     -
                   </button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => dispatch(incrementQuantity(item.id))}>
+                  <button
+                    className="w-6 h-8 bg-black text-white border-none m-2 text-base"
+                    onClick={() => dispatch(incrementQuantity(String(item.id)))}
+                  >
                     +
                   </button>
                 </div>
@@ -125,7 +142,7 @@ export default function Cart() {
                   query: { cart: JSON.stringify(cart) },
                 }}
               >
-                <button type="submit" className="bg-green-500 text-white w-36">
+                <button type="submit" className="bg-teal-200 text-gray-800 rounded-lg font-semibold py-2 w-36">
                   CheckOut
                 </button>
                 {/* <Button

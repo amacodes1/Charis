@@ -56,6 +56,6 @@ nav .inputBox::placeholder {
   @apply flex-1;
 }
 
-.cart .buttons > * {
+/* .cart .buttons > * {
   @apply w-6 h-8 bg-black text-white border-none m-2 text-base;
-}
+} */

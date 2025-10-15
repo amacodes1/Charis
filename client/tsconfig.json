@@ -29,7 +29,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/checkout/page.tsx",
-    "src/app/cart/page.jsx"
+    "src/app/cart/page.tsx"
   ],
   "exclude": ["node_modules"]
 }

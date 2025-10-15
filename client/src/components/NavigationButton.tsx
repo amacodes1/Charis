@@ -14,7 +14,7 @@ export default function NavigationButton() {
   ];
   return (
     <div>
-      <div className="flex items-center justify-center  mt-20">
+      <div className="flex items-center justify-center  mt-14">
         {buttons.map((button, index) => {
           return (
             <div key={index} className="mr-4">

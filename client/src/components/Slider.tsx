@@ -18,7 +18,7 @@ export const Slider = () => {
   }, [dispatch]);
 
   return (
-    <div className="relative pb-4 z-0 h-[500px]">
+    <div className="relative pb-2 z-0 h-[370px]">
       {data &&
         data.map((item: any, index: number) => (
           <div

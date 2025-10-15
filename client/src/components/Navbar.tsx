@@ -20,7 +20,7 @@ export default function Navbar() {
   // console.log(getItemsCount());
 
   return (
-    <nav className="bg-teal-200 w-full h-16 p-4 sticky top-0 z-50">
+    <nav className="bg-teal-200 w-full h-16 py-4 px-14 sticky top-0 z-50">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold">
           <Link href="/" className="text-black no-underline font-rem">
@@ -34,11 +34,11 @@ export default function Navbar() {
 
         <div className="flex items-center space-x-4">
           <Link href="/register">
-            <User size={32} />
+            <User size={24} />
           </Link>
           
           <Link href="/cart" className="relative">
-            <ShoppingCart size={32} />
+            <ShoppingCart size={24} />
             <span className="text-xs bg-red-500 text-white rounded-full px-1.5 py-0.5 absolute -top-2 -right-2">
               {getItemsCount()}
             </span>
